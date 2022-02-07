@@ -12,6 +12,7 @@
     </changeSet>
 
     <changeSet id="create_table.PRODUCT" author="kropotov.artem" context="postgresql" labels="product_table">
+
         <createTable tableName="PRODUCT">
             <column name="ID" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
@@ -36,10 +37,12 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
     </changeSet>
 
 
     <changeSet id="create_table.CATEGORY" author="kropotov.artem" context="postgresql" labels="category_table">
+
         <createTable tableName="CATEGORY">
             <column name="ID" type="BIGSERIAL">
                 <constraints primaryKey="true" nullable="false"/>
@@ -48,9 +51,12 @@
                 <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
+
     </changeSet>
 
-    <changeSet id="create_table.PRODUCT_CATEGORY" author="kropotov.artem" context="postgresql" labels="product_category_table">
+    <changeSet id="create_table.PRODUCT_CATEGORY" author="kropotov.artem" context="postgresql"
+               labels="product_category_table">
+
         <createTable tableName="PRODUCT_CATEGORY">
             <column name="PRODUCT_ID" type="BIGINT">
                 <constraints nullable="false"/>
@@ -62,10 +68,12 @@
 
         <addPrimaryKey tableName="PRODUCT_CATEGORY" columnNames="PRODUCT_ID, CATEGORY_ID"/>
 
-        <addForeignKeyConstraint baseTableName="PRODUCT_CATEGORY" baseColumnNames="PRODUCT_ID" constraintName="FK_PRODUCT_CATEGORY_PRODUCT"
+        <addForeignKeyConstraint baseTableName="PRODUCT_CATEGORY" baseColumnNames="PRODUCT_ID"
+                                 constraintName="FK_PRODUCT_CATEGORY_PRODUCT"
                                  referencedTableName="PRODUCT" referencedColumnNames="ID"/>
 
-        <addForeignKeyConstraint baseTableName="PRODUCT_CATEGORY" baseColumnNames="CATEGORY_ID" constraintName="FK_PRODUCT_CATEGORY_CATEGORY"
+        <addForeignKeyConstraint baseTableName="PRODUCT_CATEGORY" baseColumnNames="CATEGORY_ID"
+                                 constraintName="FK_PRODUCT_CATEGORY_CATEGORY"
                                  referencedTableName="CATEGORY" referencedColumnNames="ID"/>
     </changeSet>
 </databaseChangeLog>
